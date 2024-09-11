@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multiple File Input</title>
+    <script>
+        function showFileNames() {
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = ''; // Clear previous file names
+
+            if (fileInput.files.length > 0) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = fileInput.files[i].name;
+                    fileList.appendChild(listItem);
+                }
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = "No files selected";
+                fileList.appendChild(listItem);
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Input tag for multiple file selection -->
+<input type="file" id="fileInput" multiple onchange="showFileNames()">
+
+<!-- Render file names -->
+<p>Selected files:</p>
+<ul id="fileList">
+    <li>No files selected</li>
+</ul>
+</body>
+</html>
